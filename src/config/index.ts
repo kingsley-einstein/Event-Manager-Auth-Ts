@@ -1,4 +1,5 @@
 import middlewares from "../middlewares";
+import router from "../routes";
 
 const { Cors } = middlewares;
 
@@ -8,5 +9,6 @@ export default (app: any) => {
     app.use(urlencoded({ extended: false }));
     app.use(Cors("*"));
     app.use(logger("dev"));
+    app.use("/api/v1", router);
   };
 };

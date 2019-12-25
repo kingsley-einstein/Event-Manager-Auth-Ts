@@ -55,3 +55,5 @@ app.listen(ports[process.env.NODE_ENV], async () => {
     await loadCloudConfigAndEureka();
   }
 });
+
+export default app;
