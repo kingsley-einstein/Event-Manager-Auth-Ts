@@ -1,0 +1,10 @@
+{
+  "exclude": ["./node_modules"],
+  "compilerOptions": {
+    "outDir": "./build",
+    "esModuleInterop": true,
+    "newLine": "crlf",
+    "rootDir": "./src",
+    "pretty": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "rules": {
+    "max-line-length": false,
+    "trailing-comma": false,
+    "indent": {
+      "options": "spaces"
+    }
+  }
+}
