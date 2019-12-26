@@ -60,5 +60,15 @@ describe("TESTS", () => {
           done(err);
         });
     });
+    it("should respond with a 401 if authorization header is absent", (done) => {
+      supertest(app)
+        .get(`${root}/auth`)
+        .end((err, res) => {
+          const { status, body } = res;
+          console.table([body]);
+          expect(status).to.be.eql(401);
+          done(err);
+        });
+    });
   });
 });
