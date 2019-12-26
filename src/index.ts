@@ -48,7 +48,7 @@ const app = express();
 configure(config(app));
 
 app.listen(ports[process.env.NODE_ENV], async () => {
-  console.log(`Server running on port ${process.env.PORT}`);
+  console.log(`Server running on port ${ports[process.env.NODE_ENV]}`);
   if (process.env.NODE_ENV !== "test") {
     const s = await sequelize.sync({});
     if (s) console.log("Sequelize sync complete");

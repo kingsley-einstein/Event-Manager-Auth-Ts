@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - "stable"
+services:
+  - postgresql
+before_install:
+  - cp .env.travis .env
+cache:
+  directories:
+    - node_modules
+install:
+  - npm install
+before_script:
+  - psql -h 127.0.0.1 -p 5432 -c "DROP DATABASE IF EXISTS travis" -U postgres
+  - psql -h 127.0.0.1 -p 5432 -c "CREATE DATABASE travis" -U postgres
+script:
+  - npm run test:travis

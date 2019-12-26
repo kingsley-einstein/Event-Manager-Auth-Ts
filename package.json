@@ -37,8 +37,11 @@
   "scripts": {
     "test": "set NODE_ENV=test&& npm run clean:build && nyc mocha ./build/test/*.spec.js -R spec --timeout 30000 --exit",
     "clean": "if exist ./build rmdir /s/q build",
+    "clean:unix": "if -d ./build; then rm -rf build fi",
     "build": "tsc -p ./",
-    "clean:build": "npm run clean && npm run build"
+    "clean:build": "npm run clean && npm run build",
+    "build:unix": "npm run clean:unix && npm run build",
+    "test:travis": "export NODE_ENV=test && npm run build:unix && nyc mocha ./build/test/*.spec.js -R spec --timeout 30000 --exit"
   },
   "author": "",
   "license": "ISC"
