@@ -31,10 +31,11 @@
     "dotenv": "^8.2.0",
     "mocha": "^6.2.2",
     "nyc": "^15.0.0",
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "typescript": "^3.7.4"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "set NODE_ENV=test&& npm run clean:build && nyc mocha ./build/test/*.spec.js -R spec --timeout 30000 --exit",
     "clean": "if exist ./build rmdir /s/q build",
     "build": "tsc -p ./",
     "clean:build": "npm run clean && npm run build"

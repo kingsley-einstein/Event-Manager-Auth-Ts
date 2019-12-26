@@ -1,9 +1,7 @@
-(async () => {
-  if (process.env.NODE_ENV !== "production") {
-    const d = await import("dotenv");
-    d.config();
-  }
-})();
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv")
+    .config();
+}
 
 export default {
   jwtSecret: process.env.JWT_SECRET,

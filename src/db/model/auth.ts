@@ -5,8 +5,7 @@ export default (sequelize: any, DataTypes: any) => {
   const Auth = sequelize.define("User", {
     id: {
       type: DataTypes.UUID,
-      primaryKey: true,
-      allowNull: false
+      primaryKey: true
     },
     email: {
       type: DataTypes.STRING,

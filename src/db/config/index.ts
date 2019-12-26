@@ -8,7 +8,7 @@ const production: DbConfig = {
   username: db.production.username,
   password: db.production.password,
   port: parseInt(db.production.port),
-  dialect: "pg",
+  dialect: "postgres",
   database: db.production.database,
   define: {
     underscored: true
@@ -20,10 +20,10 @@ const production: DbConfig = {
 
 const development: DbConfig = {
   host: db.development.host,
-  username: "",
-  password: db.development.username,
+  username: db.development.username,
+  password: db.development.password,
   port: parseInt(db.development.port),
-  dialect: "pg",
+  dialect: "postgres",
   database: db.development.database,
   define: {
     underscored: true
@@ -38,7 +38,7 @@ const test: DbConfig = {
   username: db.test.username,
   password: db.test.password,
   port: parseInt(db.test.port),
-  dialect: "pg",
+  dialect: "postgres",
   database: db.test.database,
   define: {
     underscored: true

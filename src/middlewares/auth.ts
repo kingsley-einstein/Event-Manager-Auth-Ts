@@ -26,6 +26,26 @@ export default class AuthWare {
     }
   }
 
+  static async checkEmailExists(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const { email } = req.body;
+      const u = await Auth.findByEmail(email);
+      if (u) {
+        res.status(400).json({
+          statusCode: 400,
+          body: "Email is already in use."
+        });
+        return;
+      }
+      next();
+    } catch (error) {
+      res.status(500).json({
+        statusCode: 500,
+        body: error
+      });
+    }
+  }
+
   static async checkToken(req: Request | any, res: Response | any, next: NextFunction): Promise<void> {
     try {
       const { authorization } = req.headers;

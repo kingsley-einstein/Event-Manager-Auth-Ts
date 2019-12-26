@@ -4,8 +4,7 @@ export default (sequelize: any, DataTypes: any) => {
   const Token = sequelize.define("token", {
     id: {
       type: DataTypes.UUID,
-      primaryKey: true,
-      allowNull: false
+      primaryKey: true
     },
     actual: {
       type: DataTypes.TEXT,
