@@ -70,5 +70,16 @@ describe("TESTS", () => {
           done(err);
         });
     });
+    it("should log user out", (done) => {
+      supertest(app)
+        .post(`${root}/auth/logout`)
+        .set("Authorization", `Bearer ${token}`)
+        .end((err, res) => {
+          const { status, body } = res;
+          console.table([body]);
+          expect(status).to.be.eql(200);
+          done(err);
+        });
+    });
   });
 });
