@@ -1,3 +1,4 @@
+import actuator from "express-actuator";
 import middlewares from "../middlewares";
 import router from "../routes";
 
@@ -9,6 +10,7 @@ export default (app: any) => {
     app.use(urlencoded({ extended: false }));
     app.use(Cors("*"));
     app.use(logger("dev"));
+    app.use(actuator());
     app.use("/api/v1", router);
   };
 };

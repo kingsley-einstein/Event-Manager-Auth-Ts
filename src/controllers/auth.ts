@@ -29,6 +29,13 @@ export default class AuthController implements BaseController {
     try {
       const { email, password } = req.body;
       const user = await Auth.findByEmail(email);
+      if (!user) {
+        res.status(404).json({
+          statusCode: 404,
+          body: "User not found."
+        });
+        return;
+      }
       if (!bcrypt.compareSync(password, user.password)) {
         res.status(400).json({
           statusCode: 400,
@@ -70,10 +77,10 @@ export default class AuthController implements BaseController {
     try {
       const { body, user } = req;
       const { id } = user;
-      const updated = await Auth.update(body, { where: { id }, individualHooks: true })[1][0];
+      const [, [ updated ]] = await Auth.update(body, { where: { id }, individualHooks: true });
       res.status(200).json({
         statusCode: 200,
-        body: updated
+        body: { id: updated.id, email: updated.email }
       });
     } catch (error) {
       res.status(500).json({
