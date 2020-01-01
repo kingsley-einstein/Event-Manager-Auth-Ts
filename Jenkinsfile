@@ -2,8 +2,14 @@ pipeline {
   agent any
   environment {
     PGPASSWORD = 'password'
+    GIT_URI = 'https://github.com/kingsley-einstein/Event-Manager-Auth-Ts'
   }
   stages {
+    stage("Clone repository") {
+      steps {
+        git "${GIT_URI}"
+      }
+    }
     stage("Copy .env.jenkins to new location with new name") {
       steps {
         bat 'copy .env.jenkins .env'
