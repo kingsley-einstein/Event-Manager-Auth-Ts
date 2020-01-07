@@ -17,9 +17,11 @@ const loadCloudConfigAndEureka = async (): Promise<void> => {
   const eureka = await EurekaConfig.loadEureka({
     instance: {
       app: c.get("eureka.instance.app"),
+      instanceId: `${c.get("eureka.instance.app")}:${ports[process.env.NODE_ENV]}`,
       hostName: c.get("eureka.instance.hostname"),
       ipAddr: c.get("eureka.instance.hostname"),
       statusPageUrl: c.get("eureka.instance.statusPage"),
+      healthCheckUrl: c.get("eureka.instance.healthCheck"),
       port: {
         "$": parseInt(ports[process.env.NODE_ENV]),
         "@enabled": true
