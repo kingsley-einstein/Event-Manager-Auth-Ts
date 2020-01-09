@@ -44,7 +44,8 @@
     "clean:build": "npm run clean && npm run build",
     "build:unix": "npm run clean:unix && npm run build",
     "test:travis": "export NODE_ENV=test && npm run build:unix && nyc mocha ./build/test/*.spec.js -R spec --timeout 30000 --exit",
-    "start:local": "set NODE_ENV=development&& npm run clean:build && nodemon ./build/index"
+    "start:local": "set NODE_ENV=development&& npm run clean:build && nodemon ./build/index",
+    "start:kinto": "export NODE_ENV=production && export PORT=80 && node ./build/index"
   },
   "author": "",
   "license": "ISC"
